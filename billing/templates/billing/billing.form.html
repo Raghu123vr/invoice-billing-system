@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Billing Page</title>
+</head>
+<body>
+
+<h2>Billing Page</h2>
+
+<form method="POST">
+    {% csrf_token %}
+
+    Customer Email:
+    <input type="email" name="email" placeholder="Email ID" required>
+    <br><br>
+
+   
+
+    <h3>Bill Section</h3>
+
+    <div id="items">
+        <div>
+            Product:
+            <select name="product_id[]" required>
+                <option value="" disabled selected>Select Product</option>
+                
+                {% for p in products %}
+                    <option value="{{p.id}}">{{p.product_id}}-{{p.name}} </option>
+                {% endfor %}
+            </select>
+
+            Quantity:
+            <input type="number" name="quantity[]" min="1" placeholder="Quantity">
+        </div>
+    </div>
+
+    <br>
+    <button type="button" onclick="addRow()">Add New</button>
+
+    <hr>
+
+    <h3>Denominations</h3>
+
+    500: <input type="number" name="d500" placeholder="Count"><br>
+    50: <input type="number" name="d50" placeholder="Count"><br>
+    20: <input type="number" name="d20" placeholder="Count"><br>
+    10: <input type="number" name="d10" placeholder="Count"><br>
+    5: <input type="number" name="d5" placeholder="Count"><br>
+    2: <input type="number" name="d2" placeholder="Count"><br>
+    1: <input type="number" name="d1" placeholder="Count"><br>
+
+    <br>
+
+    Cash paid by customer:
+    <input type="number" name="paid" placeholder="Amount">
+
+    <br><br>
+    <button type="reset">Cancel</button>
+    
+    <button type="submit">Generate Bill</button>
+
+</form>
+
+<script>
+
+let options = `
+<option value="" disabled selected>Select Product</option>
+{% for p in products %}
+<option value="{{p.id}}">{{p.product_id}} - {{p.name}}</option>
+{% endfor %}
+`;
+
+function addRow(){
+    let div = document.createElement("div");
+
+    div.innerHTML = `
+        Product:
+        <select name="product_id[]" required>
+            ${options}
+        </select>
+
+        Quantity:
+        <input type="number" name="quantity[]" min="1" placeholder="Quantity">
+    `;
+
+    document.getElementById("items").appendChild(div);
+}
+
+</script>
+
+</body>
+</html>

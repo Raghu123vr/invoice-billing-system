@@ -1,0 +1,51 @@
+<h2>Billing Page</h2>
+
+Customer Email: {{email}}
+
+
+
+<table border="1">
+<tr>
+<th>Product ID</th>
+<th>Product Name</th>
+<th>Unit Price</th>
+<th>Quantity</th>
+<th>Purchase Price</th>
+<th>Tax % for item</th>
+<th>Tax payable for item</th>
+<th>Total price of the item</th>
+</tr>
+
+{% for i in items %}
+<tr>
+    <td>{{i.id}}</td>
+<td>{{i.name}}</td>
+<td>{{i.price}}</td>
+<td>{{i.qty}}</td>
+<td>{{i.purchase_price}}</td>
+<td>{{i.tax_percent}}</td>
+<td>{{i.tax_amount}}</td>
+<td>{{i.total_price}}</td>
+</tr>
+{% endfor %}
+</table>
+
+<br>
+
+Total price without tax: {{total_without_tax}} <br>
+Total tax payable: {{total_tax}} <br>
+Net price of the purchased item: {{net_price}} <br>
+Rounded down value of the purchased items net price: {{rounded_price}} <br>
+Balance payable to the customer: {{balance}} <br>
+
+<h3>Balance Denomination:</h3>
+
+{% for note, count in denomination.items %}
+{{note}} : {{count}} <br>
+{% endfor %}
+
+<br><br>
+
+<a href="/history/?email={{email}}">
+    <button>View Previous Purchases</button>
+</a>

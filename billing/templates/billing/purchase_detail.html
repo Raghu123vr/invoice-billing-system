@@ -1,0 +1,15 @@
+<h2>Previous Purchased Items</h2>
+
+<table border="1">
+    <tr>
+        <th>Product Name</th>
+        <th>Date</th>
+    </tr>
+
+    {% for i in items %}
+    <tr>
+        <td>{{ i.product.name }}</td>
+        <td>{{ i.purchase.created_at }}</td>
+    </tr>
+    {% endfor %}
+</table>
