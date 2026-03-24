@@ -132,6 +132,6 @@ EMAIL_TIMEOUT = 30
 
 
 EMAIL_HOST_USER = 'raghuvrramesh778@gmail.com'
-EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
+EMAIL_HOST_PASSWORD = 'pjrrleohmvceteml'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
