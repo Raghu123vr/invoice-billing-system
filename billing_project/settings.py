@@ -131,3 +131,4 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'raghuvrramesh778@gmail.com'
 EMAIL_HOST_PASSWORD = ''
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = '/static/'
