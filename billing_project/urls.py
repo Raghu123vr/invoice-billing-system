@@ -20,6 +20,6 @@ from billing import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('bill/',views.billing_page),
+    path('',views.billing_page),
     path('history/',views.purchase_history,name='purchase_history')
 ]
